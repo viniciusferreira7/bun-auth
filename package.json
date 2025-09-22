@@ -9,6 +9,7 @@
     "check": "biome check --write"
   },
   "dependencies": {
+    "@elysiajs/openapi": "^1.4.10",
     "elysia": "latest",
     "zod": "^4.1.11"
   },

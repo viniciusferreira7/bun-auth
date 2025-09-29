@@ -1,0 +1,30 @@
+services:
+  bun-auth-postgresql:
+    container_name: bun-auth-postgresql
+    image: bitnami/postgresql:17.2.0
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRESQL_USERNAME: ${DATABASE_USERNAME}
+      POSTGRESQL_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRESQL_DATABASE: ${DATABASE_NAME}
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${DATABASE_USERNAME} -d ${DATABASE_USERNAME}",
+        ]
+      interval: 5s
+      timeout: 2s
+      retries: 20
+    networks:
+      - bun-auth-network
+    volumes:
+      - bun_auth_pag_data:/bitnami/postgresql
+
+networks:
+  bun-auth-network:
+    driver: bridge
+
+volumes:
+  bun_auth_pag_data:

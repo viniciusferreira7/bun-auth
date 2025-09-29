@@ -1,6 +1,7 @@
 import openapi from '@elysiajs/openapi';
 import { Elysia } from 'elysia';
 import z from 'zod';
+import { env } from '@/env';
 
 const app = new Elysia()
 	.use(
@@ -28,7 +29,7 @@ const app = new Elysia()
 			}),
 		}
 	)
-	.listen(3333);
+	.listen(env.PORT);
 
 console.log(
 	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`

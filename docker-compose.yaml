@@ -1,13 +1,13 @@
 services:
   bun-auth-postgresql:
     container_name: bun-auth-postgresql
-    image: bitnami/postgresql:17.2.0
+    image: postgres:17.2
     ports:
       - 5432:5432
     environment:
-      POSTGRESQL_USERNAME: ${DATABASE_USERNAME}
-      POSTGRESQL_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRESQL_DATABASE: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
     healthcheck:
       test:
         [
@@ -20,7 +20,7 @@ services:
     networks:
       - bun-auth-network
     volumes:
-      - bun_auth_pag_data:/bitnami/postgresql
+      - bun_auth_pag_data:/var/lib/postgresql/data
 
 networks:
   bun-auth-network:

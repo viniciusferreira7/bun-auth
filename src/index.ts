@@ -1,16 +1,12 @@
-import openapi from '@elysiajs/openapi';
 import { Elysia } from 'elysia';
 import z from 'zod';
 import { env } from '@/env';
+import { betterAuthPlugin } from './http/plugins/better-auth';
+import { openApiPlugin } from './http/plugins/open-api';
 
 const app = new Elysia()
-	.use(
-		openapi({
-			mapJsonSchema: {
-				zod: z.toJSONSchema,
-			},
-		})
-	)
+	.use(openApiPlugin)
+	.use(betterAuthPlugin)
 	.get('/', () => 'Hello Elysia')
 	.get(
 		'/users/:id',

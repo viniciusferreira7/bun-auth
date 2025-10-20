@@ -7,4 +7,9 @@ export const auth = betterAuth({
 		provider: 'pg',
 		usePlural: true,
 	}),
+	advanced: {
+		database: {
+			generateId: false,
+		},
+	},
 });

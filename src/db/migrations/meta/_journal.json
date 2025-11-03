@@ -8,6 +8,13 @@
       "when": 1760351762783,
       "tag": "0000_charming_dexter_bennett",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1762174634880,
+      "tag": "0001_simple_talisman",
+      "breakpoints": true
     }
   ]
 }

@@ -11,11 +11,14 @@ const app = new Elysia()
 	.get(
 		'/users/:id',
 		(request) => {
-			const { params } = request;
+			const { params, user } = request;
 
 			console.log(params.id);
+
+			return { id: user.id, name: user.name };
 		},
 		{
+			auth: true,
 			detail: {
 				summary: 'Get user',
 				tags: ['users'],
